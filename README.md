@@ -8,60 +8,78 @@ A Python-based tool that allows users to generate and manage file structures fro
 - CLI interface for ease of use.
 - Supports interactive mode (future implementation).
 
-## Project Structure
-```
-file-structure-builder/
-├── file_structure_builder/
-│   ├── __init__.py
-│   ├── builder.py          # Core logic for building file structures
-│   ├── parser.py           # Logic for parsing input (file or API)
-│   └── utils.py            # Utility functions
-├── tests/                  # Unit tests
-│   └── test_builder.py
-├── cli.py                  # CLI entry point
-├── requirements.txt        # Python dependencies
-├── README.md               # Project documentation
-└── .gitignore              # Git ignore file
-```
+# File Structure Builder - User Guide
 
 ## Installation
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/aliasgharmirhshai/File-Structure-Builder.git
-   cd file-structure-builder
-   ```
-2. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
+To install `file-structure-builder`, run:
+```sh
+pip install file-structure-builder
+```
+After installation, you can use the `fsb` command in your terminal.
 
 ## Usage
-### CLI Usage
-Run the CLI with:
-```sh
-python cli.py --file structure.txt
-```
 
-#### Options:
-- `--file`, `-f <path>`: Path to the structure definition file.
-- `--api`, `-a` (Not yet implemented): Fetch structure from an API.
-- `--interactive`, `-i` (Not yet implemented): Interactive mode to build structures.
-
-### Example Structure File
-Create a file named `structure.txt` with the following content:
+### 1. Create a File Structure from a Text File
+Prepare a text file (e.g., `structure.txt`) with your desired file structure:
 ```
-project/
+project-root/
     ├── src/
     │   ├── main.py
     │   ├── utils.py
+    │   ├── config/
+    │   │   ├── settings.json
+    │   │   ├── database.json
+    ├── tests/
+    │   ├── test_main.py
     ├── README.md
-    ├── .gitignore
 ```
-Run the command:
+Then, run:
 ```sh
-python cli.py --file structure.txt
+fsb --file structure.txt
 ```
-This will generate the corresponding file structure in your current directory.
+This will create the directory structure as defined in `structure.txt`.
+
+### 2. Interactive Mode
+You can start an interactive session where you describe your structure:
+```sh
+fsb --interactive
+```
+It will prompt you to enter the desired file structure.
+
+### 3. Fetch Structure from API (Future Feature)
+(Not implemented yet)
+```sh
+fsb --api
+```
+
+## Command-Line Options
+
+| Command | Description |
+|---------|------------|
+| `fsb --file <file.txt>` | Creates file structure from a text file |
+| `fsb --interactive` | Opens an interactive session to define structure |
+| `fsb --api` | (Future) Fetch structure from API |
+
+## Example Usage
+
+### Example 1: Creating a Basic Project Structure
+```sh
+fsb --file my_structure.txt
+```
+This will read `my_structure.txt` and create directories and files.
+
+### Example 2: Interactive Mode
+```sh
+fsb --interactive
+```
+Follow the instructions to build a structure manually.
+
+## Uninstalling
+To remove `file-structure-builder`:
+```sh
+pip uninstall file-structure-builder
+```
+
 
 ## Module Overview
 ### `file_structure_builder/builder.py`
